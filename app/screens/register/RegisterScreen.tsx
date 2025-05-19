@@ -16,7 +16,7 @@ const RegisterScreen: React.FC = () => {
   };
 
   const navigateToLogin = () => {
-    router.push('/');
+    router.push('/screens/login/LoginScreen');
   };
 
   return (
@@ -27,7 +27,7 @@ const RegisterScreen: React.FC = () => {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container}>
           <View style={styles.imagePlaceholder}>
-            <Image source={require('../../assets/images/logo-app.png')} resizeMode="center" />
+            <Image source={require('@/assets/images/logo-app.png')} resizeMode="center" />
             <View style={styles.placeholderBox} />
           </View>
 

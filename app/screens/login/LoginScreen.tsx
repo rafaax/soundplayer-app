@@ -16,6 +16,10 @@ const LoginScreen: React.FC = () => {
     // Add actual login logic here
   };
 
+  const navigateToRegister = () => {
+    router.push('/screens/register/RegisterScreen');
+  };
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -68,7 +72,7 @@ const LoginScreen: React.FC = () => {
 
             <View style={styles.registerContainer}>
                 <Text style={styles.registerText}>Não tem uma conta?</Text>
-                <TouchableOpacity onPress={() => router.push('/')}>
+                <TouchableOpacity onPress={navigateToRegister}>
                     <Text style={styles.registerNowText}> Se registre agora!</Text>
                 </TouchableOpacity>
             </View>
