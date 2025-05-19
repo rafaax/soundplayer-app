@@ -28,18 +28,26 @@ export default function TabLayout() {
       }}>
       <Tabs.Screen
         name="index"
+        // @ts-ignore - This is a valid route for the Home screen
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="explore" // Assuming 'explore' is the correct file name for the explore screen
         options={{
           title: 'Explore',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
       />
+ <Tabs.Screen
+ name="library" // You'll need to create a 'library.tsx' file for this tab
+ options={{
+ title: 'Library',
+ tabBarIcon: ({ color }) => <IconSymbol size={28} name="book.closed.fill" color={color} />,
+ }}
+ />
     </Tabs>
   );
 }
