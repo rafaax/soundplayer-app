@@ -4,12 +4,10 @@ const homeStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5F5F5',
-    paddingHorizontal: 16,
-    paddingTop: 10,
+    paddingTop: 10, // Keep vertical padding if needed
   },
   mainContent: {
-    paddingHorizontal: 16,
-  },
+  }, // Remove horizontal padding
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -36,11 +34,12 @@ const homeStyles = StyleSheet.create({
     color: '#333',
   },
   section: {
-    marginBottom: 20,
-    paddingHorizontal: 16, // Added padding for consistency
+    marginBottom: 20, // Consistent vertical spacing between sections
   },
   artistListContainer: {
     marginBottom: 20,
+    // Removed horizontal margin/padding to allow items to spread
+    paddingHorizontal: 0, 
   },
   artistItem: {
     alignItems: 'center',
@@ -48,7 +47,6 @@ const homeStyles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     marginRight: 10,
- flexDirection: 'row',
   },
   artistImageContainer: {
     width: 40,
@@ -70,16 +68,17 @@ const homeStyles = StyleSheet.create({
     color: '#333', fontWeight: 'bold',
   },
   albumListContainer: {
+    paddingHorizontal: 0, // Ensure no horizontal padding on the list container
     marginBottom: 20,
   },
   albumItem: {
-    width: 150,
-    marginRight: 15,
+    width: 160, // Adjusted width
+    marginRight: 10, // Adjusted spacing between items
     marginBottom: 10,
   },
   albumImageContainer: {
     width: '100%',
-   height: 150, // Adjust as needed
+    height: 160, // Adjusted height to be square-like
     backgroundColor: '#E0E0E0', // Placeholder background
     borderRadius: 8,
     justifyContent: 'center',
@@ -89,16 +88,18 @@ const homeStyles = StyleSheet.create({
   albumTitle: {
     fontSize: 14,
     color: '#333',
-    fontWeight: 'bold',
+    fontWeight: 'bold', // Already bold
   },
   albumArtist: {
     fontSize: 12,
-    color: '#666', marginTop: 2,
+    color: '#666',
+    marginTop: 2, // Already has margin top
   },
   albumCoverPlaceholder: {
     width: '100%',
-    height: 150,
-    backgroundColor: '#E0E0E0',
+    height: 160, // Match the container height
+    backgroundColor: '#E0E0E0', // Match the container background
+    justifyContent: 'center', // Center placeholder content
     borderRadius: 8,
   },
   placeholderImage: {

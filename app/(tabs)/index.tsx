@@ -1,57 +1,86 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import homeStyles from '@/assets/styles/screens/homeStyles';
+import AppHeader from '@/components/AppHeader'; // Assuming AppHeader is in the components folder
+import { Ionicons } from '@expo/vector-icons'; // Import Ionicons
+import React from 'react';
+import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function HomeScreen() {
+  const artists = [{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }];
+
+  // Placeholder data for album sections
+  const albums = [{ key: 'a1' }, { key: 'a2' }, { key: 'a3' }, { key: 'a4' }];
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={homeStyles.container}>
+      <AppHeader />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={homeStyles.mainContent}>
+          {/* Artist grid section */}
+          <View style={homeStyles.section}>
+            <Text style={homeStyles.sectionTitle}>Followed Artists</Text>
+            <FlatList
+              data={artists}
+              renderItem={({ item }) => (
+                <View style={homeStyles.artistItem}>
+                  {/* Placeholder for artist image */}
+                  <View style={homeStyles.artistImageContainer}>
+                     <Ionicons name="person" size={24} color="#B0B0B0" />
+                  </View>
+                  <Text style={homeStyles.artistName}>Artist #{item.key}</Text>
+                </View>
+              )}
+              keyExtractor={(item) => item.key}
+              numColumns={2} // We'll fix this later
+              scrollEnabled={false} // Disable scroll for grid
+              contentContainerStyle={homeStyles.artistListContainer}
+            />
+          </View>
+
+          {/* Recent albums section */}
+          <View style={homeStyles.section}>
+            <Text style={homeStyles.sectionTitle}>Recent albums from your artists</Text>
+            <FlatList
+              data={albums}
+              renderItem={({ item }) => (
+                <View style={homeStyles.albumItem}>
+                  {/* Placeholder for album cover */}
+                  <View style={homeStyles.albumImageContainer}>
+                    <Ionicons name="image" size={50} color="#B0B0B0" />
+                  </View>
+                  <Text style={homeStyles.albumTitle}>Album #{item.key.replace('a', '')}</Text>
+                  <Text style={homeStyles.albumArtist}>ARTIST #{item.key.replace('a', '')}</Text>
+                </View>
+              )}
+              keyExtractor={(item) => item.key}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={homeStyles.albumListContainer}
+            />
+          </View>
+
+          {/* Time to rewind section */}
+          <View style={homeStyles.section}>
+            <Text style={homeStyles.sectionTitle}>Time to rewind</Text>
+            <FlatList
+              data={albums} // Using the same placeholder data for now
+              renderItem={({ item }) => (
+                <View style={homeStyles.albumItem}>
+                  {/* Placeholder for album cover */}
+                  <View style={homeStyles.albumImageContainer}>
+                     <Ionicons name="image" size={50} color="#B0B0B0" />
+                  </View>
+                  <Text style={homeStyles.albumTitle}>Album #{item.key.replace('a', '')}</Text>
+                  <Text style={homeStyles.albumArtist}>ARTIST #{item.key.replace('a', '')}</Text>
+                </View>
+              )}
+              keyExtractor={(item) => item.key + '_rewind'} // Unique key for this list
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={homeStyles.albumListContainer}
+            />
+          </View>
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -73,3 +102,4 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 });
+
