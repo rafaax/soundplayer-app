@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import AppHeader from '@/components/AppHeader'; 
 import { Ionicons } from '@expo/vector-icons';
+import { useTabBarScroll } from './_layout'; // Importar o hook do arquivo de layout
 
 const DATA = [
   { id: '1', type: 'Playlist', title: 'Playlist #1', subtitle: 'User #1' },
@@ -11,8 +12,12 @@ const DATA = [
   { id: '5', type: 'Playlist', title: 'Playlist #4', subtitle: 'User #2' },
   { id: '6', type: 'Album', title: 'Album #2', subtitle: 'Artist #2' },
   { id: '7', type: 'Album', title: 'Album #9', subtitle: 'Artist #1' },
+  { id: '8', type: 'Playlist', title: 'Playlist #2', subtitle: 'User #3' },
+  { id: '9', type: 'Album', title: 'Album #10', subtitle: 'Artist #5' },
+  { id: '10', type: 'Album', title: 'Album #11', subtitle: 'Artist #2' },
+  { id: '11', type: 'Playlist', title: 'Playlist #3', subtitle: 'User #1' },
+  { id: '12', type: 'Album', title: 'Album #12', subtitle: 'Artist #4' },
 ];
-
 
 interface ListItem {
   id: string;
@@ -22,6 +27,9 @@ interface ListItem {
 }
 
 const LibraryScreen = () => {
+  // Usar o hook para controlar a visibilidade da tab bar
+  const { handleScroll } = useTabBarScroll();
+
   const renderItem = ({ item }: { item: ListItem }) => (
     <View style={styles.listItem}>
       <View style={styles.imagePlaceholder}>
@@ -41,23 +49,29 @@ const LibraryScreen = () => {
         data={DATA}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        contentContainerStyle={styles.listContentContainer}
+        contentContainerStyle={[
+          styles.listContentContainer,
+          { paddingBottom: 40 }]}
         showsVerticalScrollIndicator={false}
+        // Adicionar os handlers de scroll para controlar a tab bar
+        onScroll={handleScroll}
+        scrollEventThrottle={16} // Importante para performance
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+   container: {
     flex: 1,
     backgroundColor: '#F5F5F5',
-    paddingTop: 10, // Ajuste o padding superior se necessário
-    paddingBottom: 80, 
+    paddingTop: 10,
+    paddingBottom: 0, // Remover paddingBottom para evitar espaço extra
   },
   listContentContainer: {
     paddingVertical: 10,
     paddingHorizontal: 16,
+    paddingBottom: 100, // Adicionar padding no content container para garantir espaço suficiente no final da lista
   },
   listItem: {
     flexDirection: 'row',

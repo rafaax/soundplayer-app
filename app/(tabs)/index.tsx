@@ -1,22 +1,31 @@
+// app/(tabs)/index.tsx
 import homeStyles from '@/assets/styles/screens/homeStyles';
-import AppHeader from '@/components/AppHeader'; // Assuming AppHeader is in the components folder
-import { Ionicons } from '@expo/vector-icons'; // Import Ionicons
+import AppHeader from '@/components/AppHeader';
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ScrollView, Text, View } from 'react-native';
+import { useTabBarScroll } from './_layout'; // Importar o hook do arquivo de layout
 
 export default function HomeScreen() {
+  // Usar o hook para controlar a visibilidade da tab bar
+  const { handleScroll } = useTabBarScroll();
+  
   const artists = [{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }];
-
-  // Placeholder data for album sections
   const albums = [{ key: 'a1' }, { key: 'a2' }, { key: 'a3' }, { key: 'a4' }];
+  
   return (
     <View style={homeStyles.container}>
       <AppHeader />
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView 
+        showsVerticalScrollIndicator={false}
+        // Adicionar os handlers de scroll para controlar a tab bar
+        onScroll={handleScroll}
+        scrollEventThrottle={16} // Importante para performance
+      >
         <View style={homeStyles.mainContent}>
           {/* Artist grid section */}
           <View style={homeStyles.section}>
-            <Text style={homeStyles.sectionTitle}>Followed Artists</Text>
+            <Text style={homeStyles.sectionTitle}></Text>
             <FlatList
               data={artists}
               renderItem={({ item }) => (
@@ -29,6 +38,7 @@ export default function HomeScreen() {
                 </View>
               )}
               keyExtractor={(item) => item.key}
+              numColumns={2}
               scrollEnabled={false} // Disable scroll for grid
               contentContainerStyle={homeStyles.artistListContainer}
             />
@@ -77,28 +87,11 @@ export default function HomeScreen() {
               contentContainerStyle={homeStyles.albumListContainer}
             />
           </View>
+          
+          {/* Adicionar conteúdo extra para garantir que haja scroll suficiente */}
+          <View style={{ height: 100 }} />
         </View>
       </ScrollView>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
-

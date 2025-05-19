@@ -4,11 +4,11 @@ const homeStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5F5F5',
-    paddingTop: 10, // Keep vertical padding if needed
-    paddingBottom: 80, // Placeholder for tab bar height
+    paddingTop: 10,
+    paddingBottom: 80,
   },
   mainContent: {
-  }, // Remove horizontal padding
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -35,12 +35,11 @@ const homeStyles = StyleSheet.create({
     color: '#333',
   },
   section: {
-    marginBottom: 20, // Consistent vertical spacing between sections
+    marginBottom: 20, 
   },
   artistListContainer: {
     marginBottom: 20,
-    // Removed horizontal margin/padding to allow items to spread
-    paddingHorizontal: 0, 
+    paddingHorizontal: 16,
   },
   artistItem: {
     alignItems: 'center',
@@ -48,7 +47,11 @@ const homeStyles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     marginRight: 10,
-  },
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginBottom: 10,
+  }, 
   artistImageContainer: {
     width: 40,
     height: 40,
@@ -62,6 +65,7 @@ const homeStyles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
+    marginRight: 10,
     backgroundColor: '#E0E0E0',
   },
   artistName: {
@@ -69,18 +73,17 @@ const homeStyles = StyleSheet.create({
     color: '#333', fontWeight: 'bold',
   },
   albumListContainer: {
-    paddingHorizontal: 0, // Ensure no horizontal padding on the list container
     marginBottom: 20,
   },
   albumItem: {
-    width: 160, // Adjusted width
-    marginRight: 10, // Adjusted spacing between items
+    width: 160,
+    marginRight: 10,
     marginBottom: 10,
   },
   albumImageContainer: {
     width: '100%',
-    height: 160, // Adjusted height to be square-like
-    backgroundColor: '#E0E0E0', // Placeholder background
+    height: 160, 
+    backgroundColor: '#E0E0E0',
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -89,18 +92,18 @@ const homeStyles = StyleSheet.create({
   albumTitle: {
     fontSize: 14,
     color: '#333',
-    fontWeight: 'bold', // Already bold
+    fontWeight: 'bold',
   },
   albumArtist: {
     fontSize: 12,
     color: '#666',
-    marginTop: 2, // Already has margin top
+    marginTop: 2,
   },
   albumCoverPlaceholder: {
     width: '100%',
-    height: 160, // Match the container height
-    backgroundColor: '#E0E0E0', // Match the container background
-    justifyContent: 'center', // Center placeholder content
+    height: 160,
+    backgroundColor: '#E0E0E0',
+    justifyContent: 'center',
     borderRadius: 8,
   },
   placeholderImage: {
