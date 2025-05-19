@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Or 'react-native-vector-icons/Ionicons' depending on your setup
+import { Ionicons } from '@expo/vector-icons';
 
 const AppHeader: React.FC = () => {
   return (
@@ -24,16 +24,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 10,
-    paddingTop: 40, // Adjust this value as needed for your status bar height
+    paddingTop: 20,
     backgroundColor: '#FFFFFF',
-    borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
   },
   headerLeft: {
-    // Add any specific styling for the left side if needed
+    // Estilização específica para o lado esquerdo, se necessário
   },
   headerRight: {
-    // Add any specific styling for the right side if needed
+    // Estilização específica para o lado direito, se necessário
   },
   userIconContainer: {
     width: 36,

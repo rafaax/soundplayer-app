@@ -29,7 +29,6 @@ export default function HomeScreen() {
                 </View>
               )}
               keyExtractor={(item) => item.key}
-              numColumns={2} // We'll fix this later
               scrollEnabled={false} // Disable scroll for grid
               contentContainerStyle={homeStyles.artistListContainer}
             />

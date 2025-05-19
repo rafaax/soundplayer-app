@@ -5,6 +5,7 @@ const homeStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5F5F5',
     paddingTop: 10, // Keep vertical padding if needed
+    paddingBottom: 80, // Placeholder for tab bar height
   },
   mainContent: {
   }, // Remove horizontal padding

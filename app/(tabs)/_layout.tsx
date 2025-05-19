@@ -11,28 +11,31 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
+
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#6200EE', // A shade of purple for active tabs
-        tabBarInactiveTintColor: '#888', // A light grey for inactive tabs
+        tabBarActiveTintColor: '#6200EE',
+        tabBarInactiveTintColor: '#888',
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
+            elevation: 0, // Remove shadow
+            borderTopWidth: 0, // Remove top border
+            zIndex: 1, // Ensure tab bar is above content if needed
           },
           default: {
-            backgroundColor: '#fff', // White background for the tab bar
-            borderTopWidth: 0, // Remove the default top border
-            elevation: 0, // Remove shadow on Android
+            backgroundColor: '#fff',
+            borderTopWidth: 0,
+            elevation: 0,
           },
         }),
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
-        // @ts-ignore - This is a valid route for the Home screen
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
@@ -43,7 +46,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore" // Assuming 'explore' is the correct file name for the explore screen
+        name="explore"
         options={{
           title: 'Explore',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
@@ -53,17 +56,17 @@ export default function TabLayout() {
           },
         }}
       />
- <Tabs.Screen
- name="library" // You'll need to create a 'library.tsx' file for this tab
- options={{
- title: 'Library',
- tabBarIcon: ({ color }) => <IconSymbol size={28} name="book.closed.fill" color={color} />,
+      <Tabs.Screen
+        name="library"
+        options={{
+          title: 'Library',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="book.closed.fill" color={color} />,
           tabBarLabelStyle: {
             fontSize: 12,
             fontWeight: 'bold',
           },
- }}
- />
+        }}
+      />
     </Tabs>
   );
 }
