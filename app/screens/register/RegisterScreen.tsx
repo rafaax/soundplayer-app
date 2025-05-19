@@ -1,4 +1,4 @@
-import styles from '@/src/styles/screens/registerStyles';
+import styles from '@/assets/styles/screens/registerStyles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
@@ -16,7 +16,7 @@ const RegisterScreen: React.FC = () => {
   };
 
   const navigateToLogin = () => {
-    router.push('/login/LoginScreen');
+    router.push('/');
   };
 
   return (

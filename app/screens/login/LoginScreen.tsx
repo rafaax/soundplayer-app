@@ -1,4 +1,4 @@
-import styles from '@/src/styles/screens/loginStyles';
+import styles from '@/assets/styles/screens/loginStyles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
@@ -68,7 +68,7 @@ const LoginScreen: React.FC = () => {
 
             <View style={styles.registerContainer}>
                 <Text style={styles.registerText}>Não tem uma conta?</Text>
-                <TouchableOpacity onPress={() => router.push('/register/RegisterScreen')}>
+                <TouchableOpacity onPress={() => router.push('/')}>
                     <Text style={styles.registerNowText}> Se registre agora!</Text>
                 </TouchableOpacity>
             </View>
