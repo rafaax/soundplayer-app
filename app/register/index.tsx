@@ -28,9 +28,7 @@ const RegisterScreen: React.FC = () => {
         <View style={styles.container}>
           {/* Placeholder para Imagem */}
           <View style={styles.imagePlaceholder}>
-            {/* Assuming you have an image asset */}
-            {/* <Image source={require('../assets/images/placeholder.png')} style={styles.image} resizeMode="contain" /> */}
-            {/* Or a simple view for placeholder */}
+            <Image source={require('../assets/images/logo-app.png')} resizeMode="contain" />
             <View style={styles.placeholderBox} />
           </View>
 
