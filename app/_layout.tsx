@@ -22,9 +22,11 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="screens/login/LoginScreen" options={{ headerShown: false }} />
         <Stack.Screen name="screens/register/RegisterScreen" options={{ headerShown: false }} />
+        <Stack.Screen name="screens/home/HomeScreen" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
   );
 }
+

@@ -13,6 +13,7 @@ const LoginScreen: React.FC = () => {
 
   const handleLogin = () => {
     console.log('Logging in with:', { email, password });
+    router.push('/screens/home/HomeScreen')
     // Add actual login logic here
   };
 

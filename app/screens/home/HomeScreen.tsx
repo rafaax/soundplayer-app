@@ -1,21 +1,14 @@
 import styles from '@/assets/styles/screens/homeStyles';
 import React from 'react';
 import { FlatList, ScrollView, Text, View } from 'react-native';
+import AppHeader from '@/components/AppHeader';
 
 const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.mainContent}>
-        <View style={styles.header}>
- <View style={styles.headerLeft}>
- {/* Placeholder for notification bell icon */}
- <Text>🔔</Text>
- </View>
- <View style={styles.headerRight}>
- {/* Placeholder for user icon */}
- <Text>👤</Text>
- </View>
- </View>
+        {/* Header section */}
+        <AppHeader />
         {/* Artist grid section */}
  <View style={styles.section}>
  <Text style={styles.sectionTitle}>Followed Artists</Text>
