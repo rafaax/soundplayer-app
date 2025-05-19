@@ -2,14 +2,20 @@ import homeStyles from '@/assets/styles/screens/homeStyles';
 import AppHeader from '@/components/AppHeader';
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { FlatList, ScrollView, Text, View } from 'react-native';
-import { useTabBarScroll } from './_layout'; // Importar o hook do arquivo de layout
+import { FlatList, ScrollView, Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { useTabBarScroll } from './_layout';
 
 export default function HomeScreen() {
-  // Usar o hook para controlar a visibilidade da tab bar
+  
   const { handleScroll } = useTabBarScroll();
   
-  const artists = [{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }];
+  const artists = [
+    { key: '1', name: 'Artist #1' },
+    { key: '2', name: 'Artist #2' },
+    { key: '3', name: 'Artist #3' },
+    { key: '4', name: 'Artist #4' }
+  ];
+  
   const albums = [{ key: 'a1' }, { key: 'a2' }, { key: 'a3' }, { key: 'a4' }];
   
   return (
@@ -27,13 +33,12 @@ export default function HomeScreen() {
             <FlatList
               data={artists}
               renderItem={({ item }) => (
-                <View style={homeStyles.artistItem}>
-                  {/* Placeholder for artist image */}
-                  <View style={homeStyles.artistImageContainer}>
-                     <Ionicons name="person" size={24} color="#B0B0B0" />
+                <TouchableOpacity style={styles.genreItem}>
+                  <View style={styles.genreImageContainer}>
+                    <Ionicons name="person" size={24} color="#B0B0B0" />
                   </View>
-                  <Text style={homeStyles.artistName}>Artist #{item.key}</Text>
-                </View>
+                  <Text style={styles.genreName}>{item.name}</Text>
+                </TouchableOpacity>
               )}
               keyExtractor={(item) => item.key}
               numColumns={2}
@@ -90,3 +95,32 @@ export default function HomeScreen() {
     </View>
   );
 }
+
+// Estilos para os cards de gêneros/artistas
+const styles = StyleSheet.create({
+  genreItem: {
+    alignItems: 'center',
+    backgroundColor: '#F0F7FF',
+    padding: 10,
+    borderRadius: 8,
+    marginRight: 10,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginBottom: 10,
+  },
+  genreImageContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 8,
+    backgroundColor: '#DEEAFF',
+    marginRight: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  genreName: {
+    fontSize: 14,
+    color: '#333',
+    fontWeight: 'bold',
+  },
+});
