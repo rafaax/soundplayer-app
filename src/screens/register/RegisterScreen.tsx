@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import styles from '@/src/styles/screens/registerStyles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
-import { styles } from './styles';
+import React, { useState } from 'react';
+import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const RegisterScreen: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -16,7 +16,7 @@ const RegisterScreen: React.FC = () => {
   };
 
   const navigateToLogin = () => {
-    router.push('/login');
+    router.push('/login/LoginScreen');
   };
 
   return (
