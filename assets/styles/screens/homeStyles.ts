@@ -5,9 +5,10 @@ const homeStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5F5F5',
     paddingTop: 10,
-    paddingBottom: 80,
+    paddingBottom: 0,
   },
   mainContent: {
+    padding: 10
   },
   header: {
     flexDirection: 'row',
@@ -73,7 +74,7 @@ const homeStyles = StyleSheet.create({
     color: '#333', fontWeight: 'bold',
   },
   albumListContainer: {
-    marginBottom: 20,
+    marginBottom: 30,
   },
   albumItem: {
     width: 160,

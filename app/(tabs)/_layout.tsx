@@ -1,17 +1,13 @@
-// app/(tabs)/_layout.tsx
 import { Tabs } from 'expo-router';
 import React, { useRef } from 'react';
 import { Platform, Animated, ViewStyle, View } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
-// Criar um valor animado global para controlar a visibilidade da barra de tabs
 const tabBarVisibility = new Animated.Value(1);
 
-// Função para esconder a barra de tabs
 export function hideTabBar() {
   Animated.timing(tabBarVisibility, {
     toValue: 0,
@@ -70,7 +66,6 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
   const backgroundColor = '#FFFFFF'; // Cor de fundo da barra de tabs
 
-  // Criar o estilo animado para a barra de tabs
   const tabBarStyle = {
     ...Platform.select({
       ios: {
@@ -79,10 +74,8 @@ export default function TabLayout() {
         borderTopWidth: 1,
         borderTopColor: '#F0F0F0',
         zIndex: 1,
-        backgroundColor,
       },
       default: {
-        backgroundColor,
         borderTopWidth: 1,
         borderTopColor: '#F0F0F0',
         elevation: 0,

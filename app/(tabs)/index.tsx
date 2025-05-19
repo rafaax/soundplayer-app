@@ -1,4 +1,3 @@
-// app/(tabs)/index.tsx
 import homeStyles from '@/assets/styles/screens/homeStyles';
 import AppHeader from '@/components/AppHeader';
 import { Ionicons } from '@expo/vector-icons';
@@ -18,9 +17,8 @@ export default function HomeScreen() {
       <AppHeader />
       <ScrollView 
         showsVerticalScrollIndicator={false}
-        // Adicionar os handlers de scroll para controlar a tab bar
         onScroll={handleScroll}
-        scrollEventThrottle={16} // Importante para performance
+        scrollEventThrottle={16}
       >
         <View style={homeStyles.mainContent}>
           {/* Artist grid section */}
@@ -87,9 +85,6 @@ export default function HomeScreen() {
               contentContainerStyle={homeStyles.albumListContainer}
             />
           </View>
-          
-          {/* Adicionar conteúdo extra para garantir que haja scroll suficiente */}
-          <View style={{ height: 100 }} />
         </View>
       </ScrollView>
     </View>
